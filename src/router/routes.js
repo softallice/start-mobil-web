@@ -14,7 +14,7 @@ const routes = [
         name: 'My서비스',
         path: '/Service',
         icon: 'person',
-        component: () => import('pages/AboutPage.vue')
+        component: () => import('pages/Service.vue')
       },
       {
         name: '오늘의건강',
@@ -35,7 +35,7 @@ const routes = [
         component: () => import('pages/CreditsPage.vue')
       },
       {
-        name: 'Astronomy',
+        name: 'Astro',
         path: '/astronomy',
         icon: 'nights_stay',
         component: () => import('pages/AstronomyPage.vue')

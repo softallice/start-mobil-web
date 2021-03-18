@@ -65,13 +65,13 @@
         <div class="text-subtitle2">우리 아이 지켜주는 <span class="text-weight-bold" style="color: orange">송가리 시즌 진료</span> </div>
       </q-card-section>
       <div class="row fit justify-center items-center q-gutter-xs q-col-gutter no-wrap">
-        <q-img class="rounded-borders col-5 full-height" src="http://www.businesskorea.co.kr/news/photo/202003/42693_55108_233.jpg" />
-        <q-img class="rounded-borders col-5 full-height" src="https://i.ytimg.com/vi/25eaiesJIa8/maxresdefault.jpg" />        
+        <q-img class="rounded-borders col-5 " style="height: 100px; max-width: 300px" src="http://www.businesskorea.co.kr/news/photo/202003/42693_55108_233.jpg" />
+        <q-img class="rounded-borders col-5 " style="height: 100px; max-width: 300px" src="https://i.ytimg.com/vi/25eaiesJIa8/maxresdefault.jpg" />        
       </div>
       <q-separator size="5px" color="white"/>
       <div class="row fit justify-center items-center q-gutter-xs q-col-gutter no-wrap">
-        <q-img class="rounded-borders col-5 full-height" src="https://www.k-health.com/news/photo/202001/46982_40464_4715.jpg" />
-        <q-img class="rounded-borders col-5 full-height" src="https://you-green.com/wp-content/uploads/2020/06/4-%EB%A7%9E%EC%B6%A4%EB%8B%A4%EC%9D%B4%EC%96%B4%ED%8A%B8_%EC%9C%A0%EC%95%A4%EA%B7%B8%EB%A6%B0%EC%97%AC%EC%84%B1%ED%95%9C%EC%9D%98%EC%9B%90_%EB%B6%80%EC%82%B0-%EB%B6%81%EA%B5%AC-%EB%8D%95%EC%B2%9C%EB%8F%99.png" />
+        <q-img class="rounded-borders col-5 " style="height: 100px; max-width: 300px" src="https://www.k-health.com/news/photo/202001/46982_40464_4715.jpg" />
+        <q-img class="rounded-borders col-5 " style="height: 100px; max-width: 300px" src="https://you-green.com/wp-content/uploads/2020/06/4-%EB%A7%9E%EC%B6%A4%EB%8B%A4%EC%9D%B4%EC%96%B4%ED%8A%B8_%EC%9C%A0%EC%95%A4%EA%B7%B8%EB%A6%B0%EC%97%AC%EC%84%B1%ED%95%9C%EC%9D%98%EC%9B%90_%EB%B6%80%EC%82%B0-%EB%B6%81%EA%B5%AC-%EB%8D%95%EC%B2%9C%EB%8F%99.png" />
       </div>
       <q-separator size="10px" color="white"/>
     </q-card>
