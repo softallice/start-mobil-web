@@ -40,8 +40,9 @@ const routes = [
         icon: 'nights_stay',
         component: () => import('pages/AstronomyPage.vue')
       },
-      { path: '/diet',
+      { 
         name: 'Diet',
+        path: '/diet',
         icon: 'how_to_reg',
         component: () => import('pages/Diet.vue') 
       },
@@ -50,6 +51,10 @@ const routes = [
   { 
     path: '/login',
     component: () => import('pages/Login.vue') 
+  },
+  { 
+    path: '/consent',
+    component: () => import('pages/Consent.vue') 
   },
   {
     path: '*',

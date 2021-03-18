@@ -45,7 +45,7 @@
           </q-card-section>
         </q-card>
         
-        <q-btn class="full-width absolute-bottom" label="회원가입" to="/" type="button" color="primary"/>            
+        <q-btn class="full-width absolute-bottom" label="회원가입" to="/consent" type="button" color="primary"/>            
       </q-page>
     </q-page-container>
   </q-layout>
