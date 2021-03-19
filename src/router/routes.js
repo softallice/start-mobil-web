@@ -44,7 +44,13 @@ const routes = [
         name: 'Diet',
         path: '/diet',
         icon: 'how_to_reg',
-        component: () => import('pages/Diet.vue') 
+        component: () => import('pages/diet/DietTab.vue') 
+      },
+      { 
+        name: 'Stature',
+        path: '/stature',
+        icon: 'how_to_reg',
+        component: () => import('pages/stature/Stature.vue') 
       },
     ]
   },

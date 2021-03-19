@@ -35,7 +35,7 @@
             <q-card-section>
               <div class="text-h9">
                 <q-icon size="xs" style="color: #FF0080"  name="dvr"></q-icon>
-                안심패스에서 제공하는 서비스정의</div>
+                송아리에서 제공하는 서비스정의</div>
               <div class="text-h9">
                 <q-icon size="xs" style="color: #FF0080"  name="error_outline"></q-icon>
                 회사와 회원의 의무 사항과 주의사항</div>
@@ -110,15 +110,15 @@
         transition-show="slide-up"
         transition-hide="slide-down"
       >
-        <q-card class="bg-white text-black">
+        <q-card class="text-white">
           <q-bar>
             <q-space />
             <q-btn dense flat icon="close" v-close-popup>
-              <q-tooltip content-class="bg-white text-primary">Close</q-tooltip>
+              <q-tooltip content-class="text-primary">Close</q-tooltip>
             </q-btn>
           </q-bar>   
           <q-card-section class="q-pt-none">
-            <!-- <q-markdown :src="markdown" /> -->
+            <q-markdown :src="markdown" />
           </q-card-section>
           <q-bar>
             <q-space />
@@ -134,7 +134,7 @@
 </template>
 
 <script>
-// import markdown from "markdown/consent.md"
+import markdown from "../markdown/consent.md"
 export default {
   name: "Consent",
   data () {
@@ -143,7 +143,7 @@ export default {
       red: false,
       dialog: false,
       maximizedToggle: true,
-    //   markdown: markdown
+      markdown: markdown
     }
   },
 }

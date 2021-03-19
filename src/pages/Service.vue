@@ -109,7 +109,7 @@
             </q-card-actions>
 
             <q-card-actions vertical>
-              <q-btn flat round color="primary"  icon="chevron_right" />
+              <q-btn flat round color="primary"  icon="chevron_right" to="/stature" />
             </q-card-actions>
           </q-card-section>
         </q-card-section>
@@ -149,8 +149,8 @@
             />
             <q-card-actions vertical>
               <div>
-                <div class="text-weight-bold">혈당 및 혈압</div>
-                <div class="text-grey">지속적인 만성 질환 관리를 시작하세요.</div>
+                <div class="text-weight-bold">예약</div>
+                <div class="text-grey">의사와의 만남 스마트하게 예약하세요.</div>
               </div>
             </q-card-actions>
 

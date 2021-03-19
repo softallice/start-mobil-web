@@ -32,7 +32,7 @@ export default {
   name: 'DrawerRoutesList',
   computed: {
     appRoutes () {
-      return this.$router.options.routes[0].children.filter(route => route.name !== '홈' && route.name !== 'My서비스' && route.name !== 'Astronomy' && route.name !== '오늘의건강')
+      return this.$router.options.routes[0].children.filter(route => route.name !== '홈' && route.name !== 'My서비스' && route.name !== 'Astro' && route.name !== 'Diet' && route.name !== '오늘의건강' && route.name !== 'Stature')
     }
   }
 }

@@ -97,17 +97,37 @@
 </template>
 
 <script>
-
+import { LocalStorage } from 'quasar'
 export default {
   name: 'MainAdv',
-  
   data () {
     return {
       slide: 'first',
       slide2: 1,
       navPos: 'top',
-      autoplay: true
+      autoplay: true,
+      childList: [
+          {
+            birthDate: "2013-07-28",
+            heightList: [0, "55.7"],
+            nickName: "송아리(남)",
+            sex: "0",
+            weightList: [0, "4.5"]
+          }
+          // ,
+          // {
+          //   birthDate: "2016-04-04",
+          //   heightList: ["49.9"],
+          //   nickName: "송아리(여)",
+          //   sex: "0",
+          //   weightList: ["3.3"]
+          // }
+        ]
     }
+  },
+  mounted () {
+    LocalStorage.set('childList', this.childList)
+    console.log(LocalStorage.getItem("childList"))
   }
 }
 </script>

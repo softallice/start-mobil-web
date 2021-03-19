@@ -2,7 +2,13 @@
   <q-header>
     <q-toolbar>
       <q-toolbar-title>
-        <h4 class="q-ma-none">송아리</h4>
+        
+        <div v-if="$route.matched.some(({ name }) => name === isBackButton)">
+          <q-btn flat icon="keyboard_arrow_left" @click=$router.go(-1) />
+        </div>
+        <div v-else> 
+          <h4 class="q-ma-none">송아리</h4>
+        </div>
       </q-toolbar-title>
       <q-btn
         flat
@@ -25,7 +31,8 @@ export default {
     isLoadingSuggestedLocations: false,
     location: '',
     suggestedLocations: [],
-    isSuggestedLocationClicked: false
+    isSuggestedLocationClicked: false,
+    isBackButton: 'Diet',
   }),
   methods: {
     
