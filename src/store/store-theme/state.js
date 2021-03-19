@@ -3,9 +3,11 @@ export default function () {
     themes: {
       sky: {
         name: 'sky',
-        primary: '#fc4c4c',
+        // primary: '#fc4c4c',
+        primary: '#ea4b64',
         secondary: '#7ca5c4',
         dark: '#0D1A24',
+        // dark: '#fafafa',
         info: '#7dc9e0',
         bgImage: require('../../assets/images/themes/bg-sky.jpg'),
         // bgImage: require('../../assets/images/themes/bg-white.png'),

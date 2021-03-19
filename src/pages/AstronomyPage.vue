@@ -19,6 +19,7 @@ export default {
     }
   },
   beforeMount () {
+    console.log(this.content)
     if (!!(this.content && this.content.location.name)) {
       this.getLocationAstronomy()
     }

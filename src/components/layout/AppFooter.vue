@@ -1,5 +1,5 @@
 <template>
-  <q-footer>
+  <q-footer class="bg-dark">
     <q-tabs>
       <q-route-tab
         v-for="route in tabRoutes"

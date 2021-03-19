@@ -108,8 +108,8 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'InjectManifest', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: `Quasar Weather App`,
-        short_name: `Weather App`,
+        name: `Song A Ri App`,
+        short_name: `Songari App`,
         description: `A Quasar Framework app`,
         display: 'standalone',
         orientation: 'portrait',
@@ -180,7 +180,7 @@ module.exports = function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'quasar-weather-app'
+        appId: 'song-ar-ri-app'
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration

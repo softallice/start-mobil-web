@@ -1,9 +1,9 @@
 {
-  "name": "quasar-weather-app",
-  "version": "0.0.8",
+  "name": "quasar-songari-app",
+  "version": "0.0.1",
   "description": "A Quasar Framework app",
-  "productName": "Quasar Weather App",
-  "author": "Marco Polino",
+  "productName": "Song A Ri App",
+  "author": "s991045@gmail.com",
   "private": true,
   "scripts": {
     "build-all": "quasar build && quasar build -m pwa && quasar build -m electron"
