@@ -62,6 +62,10 @@ const routes = [
     path: '/consent',
     component: () => import('pages/Consent.vue') 
   },
+  { 
+    path: '/events',
+    component: () => import('pages/event/EventMain.vue') 
+  },
   {
     path: '*',
     component: () => import('pages/Error404.vue')
