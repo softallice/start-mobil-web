@@ -52,6 +52,28 @@ const routes = [
         icon: 'how_to_reg',
         component: () => import('pages/stature/Stature.vue') 
       },
+      // { path: '/blog', component: () => import('pages/BlogIndex.vue') },
+      // { path: '/about', component: () => import('pages/About.vue') },
+      // { path: '/posts', component: () => import('pages/blog/PostIndex.vue') },
+      // { path: '/posts/:year/:month/:day/:title', component: () => import('pages/blog/PostShow.vue') },
+      // { path: '/resources', component: () => import('pages/resources/ResourceIndex.vue') },
+      // { path: '/resources/:resource', component: () => import('pages/resources/ResourceShow.vue') },
+      // { path: '/admin', component: () => import('pages/admin/AdminIndex.vue') },
+      // { path: '/admin/posts/edit/:key', name: 'edit-post', component: () => import('pages/admin/EditPost.vue') },
+    ]
+  },
+  {
+    path: '/blog',
+    component: () => import('layouts/BlogMainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/BlogIndex.vue') },
+      // { path: '/about', component: () => import('pages/About.vue') },
+      { path: '/posts', component: () => import('pages/blog/PostIndex.vue') },
+      { path: '/posts/:year/:month/:day/:title', component: () => import('pages/blog/PostShow.vue') },
+      { path: '/resources', component: () => import('pages/resources/ResourceIndex.vue') },
+      { path: '/resources/:resource', component: () => import('pages/resources/ResourceShow.vue') },
+      // { path: '/admin', component: () => import('pages/admin/AdminIndex.vue') },
+      // { path: '/admin/posts/edit/:key', name: 'edit-post', component: () => import('pages/admin/EditPost.vue') }
     ]
   },
   { 

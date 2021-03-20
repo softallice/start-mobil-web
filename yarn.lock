@@ -4624,6 +4624,11 @@ entities@^2.0.0, entities@~2.1.0:
   resolved "https://registry.yarnpkg.com/entities/-/entities-2.1.0.tgz#992d3129cf7df6870b96c57858c249a120f8b8b5"
   integrity sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==
 
+entities@~2.0.0:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/entities/-/entities-2.0.3.tgz#5c487e5742ab93c15abb5da22759b8590ec03b7f"
+  integrity sha512-MyoZ0jgnLvB2X3Lg5HqpFmn1kybDiIfEQmKzTb5apr51Rb+T3KdmMiqa70T+bhGnyv7bQ6WMj2QMHpGMmlrUYQ==
+
 env-paths@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/env-paths/-/env-paths-2.2.0.tgz#cdca557dc009152917d6166e2febe1f039685e43"
@@ -5302,12 +5307,21 @@ from2@^2.1.0, from2@^2.1.1:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
-front-matter@^4.0.2:
+front-matter@^4.0.0, front-matter@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/front-matter/-/front-matter-4.0.2.tgz#b14e54dc745cfd7293484f3210d15ea4edd7f4d5"
   integrity sha512-I8ZuJ/qG92NWX8i5x1Y8qyj3vizhXS31OxjKDu3LKP+7/qBgfIKValiZIEwoVoJKUHlhWtYrktkxV1XsX+pPlg==
   dependencies:
     js-yaml "^3.13.1"
+
+frontmatter-markdown-loader@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/frontmatter-markdown-loader/-/frontmatter-markdown-loader-3.6.2.tgz#b4b8190f98fd76b4ad77865a53aacfa09a80a0eb"
+  integrity sha512-yZ4rQOIHgtGskRlUPsdJ5+Lo23mzyAdmFdN7JiXBzgfjrKIpOHnejmHw7EItHVRjlTwFNE1L7md4k8wmByJ33Q==
+  dependencies:
+    front-matter "^4.0.0"
+    loader-utils "^2.0.0"
+    markdown-it "^11.0.0"
 
 fs-constants@^1.0.0:
   version "1.0.0"
@@ -7234,6 +7248,13 @@ markdown-it-emoji@^2.0.0:
   resolved "https://registry.yarnpkg.com/markdown-it-emoji/-/markdown-it-emoji-2.0.0.tgz#3164ad4c009efd946e98274f7562ad611089a231"
   integrity sha512-39j7/9vP/CPCKbEI44oV8yoPJTpvfeReTn/COgRhSpNrjWF3PfP/JUxxB0hxV6ynOY8KH8Y8aX9NMDdo6z+6YQ==
 
+markdown-it-fontawesome@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-fontawesome/-/markdown-it-fontawesome-0.3.0.tgz#c0b3068d968b2e9bc4d687061746af7fbc58f959"
+  integrity sha512-8juNbWWz+AjFfH8qWoZsRQBUI/BspD5dcP1R4vqoUE+Zv0XJJ59zyYfi2efESLdPvHyAp8/mi7nrY2FH1c5tIw==
+  dependencies:
+    markdown-it-regexp "^0.4.0"
+
 markdown-it-footnote@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/markdown-it-footnote/-/markdown-it-footnote-3.0.2.tgz#1575ee7a093648d4e096aa33386b058d92ac8bc1"
@@ -7253,6 +7274,18 @@ markdown-it-mark@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/markdown-it-mark/-/markdown-it-mark-3.0.1.tgz#51257db58787d78aaf46dc13418d99a9f3f0ebd3"
   integrity sha512-HyxjAu6BRsdt6Xcv6TKVQnkz/E70TdGXEFHRYBGLncRE9lBFwDNLVtFojKxjJWgJ+5XxUwLaHXy+2sGBbDn+4A==
+
+markdown-it-prism@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/markdown-it-prism/-/markdown-it-prism-2.1.6.tgz#ad47e8f66246183df46ac9bd55812901d607aab0"
+  integrity sha512-fuo5lq36A6kzb882vCsvdyh4HUzpwdfNkAl92cr+MjUO0Q9foz/7MZ/RpKRBlZSwt86LmPlW7ubaEwf4C+0b3g==
+  dependencies:
+    prismjs "1.23.0"
+
+markdown-it-regexp@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-regexp/-/markdown-it-regexp-0.4.0.tgz#d64d713eecec55ce4cfdeb321750ecc099e2c2dc"
+  integrity sha1-1k1xPuzsVc5M/esyF1DswJniwtw=
 
 markdown-it-sub@^1.0.0:
   version "1.0.0"
@@ -7276,6 +7309,17 @@ markdown-it-toc-and-anchor@^4.2.0:
   dependencies:
     clone "^2.1.0"
     uslug "^1.0.4"
+
+markdown-it@^11.0.0:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-11.0.1.tgz#b54f15ec2a2193efa66dda1eb4173baea08993d6"
+  integrity sha512-aU1TzmBKcWNNYvH9pjq6u92BML+Hz3h5S/QpfTFwiQF852pLT+9qHsrhM9JYipkOXZxGn+sGH8oyJE9FD9WezQ==
+  dependencies:
+    argparse "^1.0.7"
+    entities "~2.0.0"
+    linkify-it "^3.0.1"
+    mdurl "^1.0.1"
+    uc.micro "^1.0.5"
 
 markdown-it@^12.0.4:
   version "12.0.4"
@@ -8921,7 +8965,7 @@ printj@~1.1.0:
   resolved "https://registry.yarnpkg.com/printj/-/printj-1.1.2.tgz#d90deb2975a8b9f600fb3a1c94e3f4c53c78a222"
   integrity sha512-zA2SmoLaxZyArQTOPj5LXecR+RagfPSU5Kw1qP+jkWeNlrq+eJZyY2oS68SU1Z/7/myXM4lo9716laOFAVStCQ==
 
-prismjs@^1.23.0:
+prismjs@1.23.0, prismjs@^1.23.0:
   version "1.23.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.23.0.tgz#d3b3967f7d72440690497652a9d40ff046067f33"
   integrity sha512-c29LVsqOaLbBHuIbsTxaKENh1N2EQBOHaWv7gkHN4dgRbxSREqDnDbtFJYdpPauS4YCplMSNCABQ6Eeor69bAA==

@@ -26,6 +26,12 @@
       "markdown/*": [
         "src/markdown/*"
       ],
+      "posts/*": [
+        "src/posts/*"
+      ],
+      "statics/*": [
+        "src/statics/*"
+      ],
       "vue$": [
         "node_modules/vue/dist/vue.esm.js"
       ]
