@@ -1,7 +1,7 @@
 {
   "@quasar/qcalendar": {},
   "@quasar/qmarkdown": {
-    "import_md": true,
-    "import_vmd": true
+    "import_md": false,
+    "import_vmd": false
   }
 }

@@ -72,8 +72,8 @@ const routes = [
       { path: '/posts/:year/:month/:day/:title', component: () => import('pages/blog/PostShow.vue') },
       { path: '/resources', component: () => import('pages/resources/ResourceIndex.vue') },
       { path: '/resources/:resource', component: () => import('pages/resources/ResourceShow.vue') },
-      // { path: '/admin', component: () => import('pages/admin/AdminIndex.vue') },
-      // { path: '/admin/posts/edit/:key', name: 'edit-post', component: () => import('pages/admin/EditPost.vue') }
+      { path: '/admin', component: () => import('pages/admin/AdminIndex.vue') },
+      { path: '/admin/posts/edit/:key', name: 'edit-post', component: () => import('pages/admin/EditPost.vue') }
     ]
   },
   { 

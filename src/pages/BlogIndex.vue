@@ -15,10 +15,14 @@
           :key="post.title"
         >
         <!-- scss 오류 해결 필요 -->
-          <!-- <q-img
-            :src="require(`src/` + post.headerImagePath)"
+        {{post.headerImagePath}}
+        <!-- :src="require(`src/` + post.headerImagePath)" -->
+          <q-img
+            
+            src="../statics/tree-bg.jpg" 
+            
             :ratio="16/9"
-          > -->
+          >
 
             <div class="absolute-bottom text-subtitle2 text-center">
               <router-link
@@ -29,7 +33,7 @@
               </router-link>
             </div>
 
-          <!-- </q-img> -->
+          </q-img>
         </q-card>
 
       </div>
@@ -105,6 +109,7 @@ export default {
     },
     async getPostsTest () {
       const response = await axios.get(`${process.env.API_URL}/admin/posts`)
+      // const response = await axios.get(`${process.env.API_URL}/admin/posts`)
       this.postsTest = response.data.posts
       console.log(this.postsTest)
     },
@@ -114,7 +119,7 @@ export default {
   },
   async created () {
     this.latestPosts = this.sortByDate(postList.posts).slice(0, 3)
-
+console.log(this.latestPosts)
     await this.getPostsTest()
     console.log(this.postsTest)
   }

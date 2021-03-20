@@ -1,8 +1,11 @@
 <template>
   <q-page class="page-with-transparent-header">
+    <!-- <q-parallax> -->
+      <!-- sass 오류 -->
     <q-parallax :src="headerImage">
       <div class="header-image-content post-header-image-content row">
         <div class="q-px-md text-white">
+          {{post}}
           <h1 class=" text-bold q-pa-md">{{post.attributes.title}}</h1>
           <div class="text-h3"> {{post.attributes.description}}</div>
           <div class="text-subtitle">{{publishedDate(post.attributes.publishDate)}}</div>
@@ -30,26 +33,44 @@ export default {
   data () {
     return {
       post: {},
+      responsePost: {},
       headerImage: ''
     }
   },
   methods: {
-     getPost () {
+    getPost () {
       const fullPathArray = this.$route.fullPath.split('/')
       // Remove the first "/" because webpack doesn't like it
+      console.log(fullPathArray[5])
       fullPathArray.shift()
       // Get the filename by removing the last item in the array
       const filename = fullPathArray.pop() + '.md'
+      // const filename = fullPathArray[5] + '.md'
+      console.log('filename',filename)
       const folderPath = fullPathArray.join('/')
-      console.log('filenam',filename)
       console.log('folderPath',folderPath)
-      this.post = require(`../../statics/${folderPath}/${filename}`)
-      // const markdown =  require (`../../statics/${folderPath}/${filename}`)
+      
+      this.responsePost = require(`../../statics/${folderPath}/${filename}`)
 
-      // this.post = require('../../statics/posts/2020/04/21/test.md')
-      console.log(this.post.attributes.headerImage)
-      console.log(this.post.attributes.headerImage)
+
+      console.log(this.responsePost)
+
+      for(var key in this.responsePost) {
+        console.log(this.responsePost[key]);
+        this.post = {
+          attributes: {
+            title: this.responsePost[1],
+            description: this.responsePost[2] ,
+            headerImage: this.responsePost[3],
+            headerImageAlt: this.responsePost[4],
+          }
+        }
+      }
+
       this.headerImage = require(`../../statics/${folderPath}/${this.post.attributes.headerImage}`)
+      // this.post = require(`src/statics/${folderPath}/${filename}`)
+      // sass 오류
+      
     },
     publishedDate (dateString) {
       // Add a timezone of 00:00:00 to make sure the date is calculated correctly

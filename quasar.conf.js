@@ -5,6 +5,12 @@
 
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
+const markdownIt = require('markdown-it')
+const markdownItFontAwesome = require('markdown-it-fontawesome')
+const markdownItPrism = require('markdown-it-prism')
+require('prismjs/components/prism-javascript')
+require('prismjs/components/prism-bash')
+require('prismjs/plugins/command-line/prism-command-line')
 
 module.exports = function (/* ctx */) {
   return {
@@ -62,6 +68,19 @@ module.exports = function (/* ctx */) {
 
       // https://quasar.dev/quasar-cli/handling-webpack
       extendWebpack (cfg) {
+        cfg.module.rules.push({
+          test: /\.md$/,
+          loader: 'frontmatter-markdown-loader',
+          exclude: /node_modules/,
+          options: {
+            markdownIt: markdownIt({ html: true, breaks: true })
+              .use(markdownItFontAwesome)
+              .use(markdownItPrism, {
+                plugins: ['command-line'],
+                defaultLanguage: 'javascript'
+              })
+          }
+        })
       },
     },
 
