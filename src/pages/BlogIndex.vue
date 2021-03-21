@@ -15,11 +15,13 @@
           :key="post.title"
         >
         <!-- scss 오류 해결 필요 -->
-        {{post.headerImagePath}}
+        {{ post.headerImagePath}}
         <!-- :src="require(`src/` + post.headerImagePath)" -->
+        <!-- "../statics/posts/2020/04/08/books.jpg"  -->
           <q-img
             
-            src="../statics/tree-bg.jpg" 
+            src="../statics/posts/2020/04/08/books.jpg"
+            
             
             :ratio="16/9"
           >
@@ -108,9 +110,9 @@ export default {
       return posts.sort((a, b) => a.publishDate - b.publishDate).reverse()
     },
     async getPostsTest () {
-      const response = await axios.get(`${process.env.API_URL}/admin/posts`)
       // const response = await axios.get(`${process.env.API_URL}/admin/posts`)
-      this.postsTest = response.data.posts
+      // const response = await axios.get(`${process.env.API_URL}/admin/posts`)
+      // this.postsTest = response.data.posts
       console.log(this.postsTest)
     },
     mdIt (markdown) {
@@ -119,8 +121,9 @@ export default {
   },
   async created () {
     this.latestPosts = this.sortByDate(postList.posts).slice(0, 3)
+    
 console.log(this.latestPosts)
-    await this.getPostsTest()
+    // await this.getPostsTest()
     console.log(this.postsTest)
   }
 }
