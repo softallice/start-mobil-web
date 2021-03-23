@@ -27,7 +27,7 @@
 
           <q-tab-panel name="analysis" class="bg-orange text-white text-center">
             <div class="text-h6">다이어트 분석</div>
-            <Diet/>
+            <DietAnalysis/>
           </q-tab-panel>
 
           <q-tab-panel name="record" class="bg-teal text-white text-center">
@@ -45,9 +45,11 @@
 
 <script>
 import Diet from "src/components/diet/Diet.vue"
+import DietAnalysis from "src/components/diet/DietAnalysis.vue"
 export default {
 components: {
     Diet,
+    DietAnalysis,
   },
   data () {
     return {

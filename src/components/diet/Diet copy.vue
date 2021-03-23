@@ -51,67 +51,32 @@
         한달간 주기적인 체중 감소를 하였습니다. 대단합니다.
       </q-card-section> -->
     </q-card>
-    
-    <!-- 다이어트 체중 입력 다이얼로그 -->
-    <q-dialog v-model="promptWeight" persistent>
+    <span>체중</span>
+    <card-charts />
+    <q-dialog v-model="prompt" persistent>
       <q-card style="min-width: 350px">
         <q-card-section>
-          <div class="text-h6">체중 입력</div>
-          <q-input 
-            filled 
-            v-model="weightdate" 
-            label="측정일자"
-            input-class="text-center">
-            <template v-slot:append>
-              <q-btn icon="event" round color="primary">
-                <q-popup-proxy @before-show="updateProxy" transition-show="scale" transition-hide="scale">
-                  <q-date v-model="proxyWeightdate">
-                    <div class="row items-center justify-end q-gutter-sm">
-                      <q-btn label="취소" color="primary" flat v-close-popup />
-                      <q-btn label="선택" color="primary" flat @click="save" v-close-popup />
-                    </div>
-                  </q-date>
-                </q-popup-proxy>
-              </q-btn>
-            </template>
-          </q-input>
+          <div class="text-h6">체중 입력 {{today}}</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <q-input 
-                filled 
-                bottom-slots 
-                v-model="bodyWeight" 
-                label="무게" 
-                type="number"
-                counter 
-                maxlength="3"
-                input-class="text-center">
-                <template v-slot:prepend>
-                  <q-btn round dense flat icon="remove" @click="weightMinus"  />
-                </template>
-                <template v-slot:append>
-                  <q-btn round dense flat icon="add" @click="weightAdd" />
-                </template>
-              </q-input>
+          <q-input dense v-model="bodyweight" autofocus @keyup.enter="prompt = false" />
         </q-card-section>
 
         <q-card-actions align="right" class="text-primary">
           <q-btn flat label="취소" v-close-popup />
-          <q-btn flat label="저장" v-close-popup @click="saveUserInfo" />
+          <q-btn flat label="저장" v-close-popup />
         </q-card-actions>
       </q-card>
     </q-dialog>
-    <!-- 스티키 버튼 -->
-    <q-page-sticky position="bottom-right" :offset="[18, 18]">
-      <q-btn fab icon="monitor_weight" color="accent" @click="promptWeight = true" />
-    </q-page-sticky>
+    
+    <div class="q-pa-md q-gutter-sm vertical-middle">
+        <q-btn class="btn-fixed-width " rounded icon="lightbulb_outline" label="체중입력" color="primary" @click="prompt = true" />
+    </div>
   </q-page>
 </template>
 
 <script>
-import { KeyValueStore } from "pages/common/keyValStore.js"
-import { date } from 'quasar'
 // normally you would not import "all" of QCalendar, but is needed for this example to work with UMD (codepen)
 import QCalendar from '@quasar/quasar-ui-qcalendar' // ui is aliased from '@quasar/quasar-ui-qcalendar'
 const CURRENT_DAY = new Date()
@@ -177,13 +142,6 @@ export default {
   },
   data () {
     return {
-      weightdate: date.formatDate(new Date(), 'YYYY/MM/DD'),
-      proxyWeightdate: date.formatDate(new Date(), 'YYYY/MM/DD') ,
-      autoplay: true,
-      promptWeight: false,
-      bodyWeight: 50,
-      userInfo: {},
-      userWeight: [],
       locale: 'ko-kr',
       shortWeekdayLabel: false,
       shortMonthLabel: false,
@@ -298,63 +256,7 @@ export default {
   beforeMount () {
     this.updateFormatter()
   },
-  beforeCreate: async function () {
-      // 로컬 DB 초기화 
-      this.indexdb = new KeyValueStore("user-metadata", "metadata");
-
-      try {
-        this.userInfo = await this.indexdb.get('userInfo');
-      } catch (e) {
-        console.error("failed to qusry the userInfo", e);
-      }
-      
-      if (typeof this.userInfo === 'undefined' ) {
-        this.$router.push('/')
-      }
-    },
   methods: {
-    //일자 선택
-    updateProxy () {
-      this.proxyWeightdate = this.weightdate
-    },
-
-    save () {
-      this.weightdate = this.proxyWeightdate
-    },
-    // 체중 선택
-    weightAdd () {
-      this.bodyWeight = this.bodyWeight + 1
-    },
-
-    weightMinus () {
-      this.bodyWeight = this.bodyWeight - 1
-    },
-     
-    async saveUserInfo  () {
-      // const inputDate = date.formatDate(new Date(), 'YYYY/MM/DD')
-      try {
-        this.userWeight = await this.indexdb.get('userWeight');
-      } catch (e) {
-        console.error("failed to qusry the userWeight", e);
-      }
-
-      const userBodyWeight = {
-        weightdate: this.weightdate,
-        weight: this.bodyWeight,
-        date: new Date(),
-      }
-      // 배열 저장을 위해 
-      const weightArray = this.userWeight
-      weightArray.push(userBodyWeight)
-
-      // 몸무게 저장
-      try {
-        this.indexdb.store('userWeight', weightArray);
-      } catch (e) {
-        console.error("failed to save the userweight", e);
-      }
-      
-    },
     updateFormatter () {
       try {
         this.dateFormatter = new Intl.DateTimeFormat(this.locale || undefined, {
