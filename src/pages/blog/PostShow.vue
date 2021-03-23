@@ -14,7 +14,7 @@
     <div class="row justify-center">
       <div
         v-html="post.html"
-        class="post-container q-pa-lg bg-white text-body"
+        class="post-container q-pa-lg bg-white"
       >
       </div>
     </div>

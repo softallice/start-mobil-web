@@ -1,18 +1,19 @@
 <template>
-  <q-page v-if="!!adevent" padding>
-    <EventMarkDown :data="adevent" />
+  <q-page>
+    <EventMarkDown />
   </q-page>
 </template>
 <script>
-import EventMarkDown from 'src/components/event/EventMarkDown'
+import fm from 'src/markdown/adevent/01.우리가족.md'
+
 export default {
     name: 'Family',
     components: {
-        EventMarkDown
+        EventMarkDown: fm.vue.components
     },
     data() {
         return {
-            adevent: { src: '../../markdown/adevent/01.우리가족.md'}
+            title: fm.attributes.title
         }
     },
 }

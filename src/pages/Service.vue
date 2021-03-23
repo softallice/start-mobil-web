@@ -47,7 +47,7 @@
     </q-dialog>
     <div class="q-pa-md row items-start q-gutter-md">
       <!-- 01. 다이어트 -->
-      <q-card class="my-card">
+      <q-card class="my-card" @click="$router.push('/diet')">
         <q-card-section >
           <q-card-section horizontal class="col-6 flex flex-center">
             <q-img
@@ -70,7 +70,7 @@
       </q-card>
 
       <!-- 02. 처방전 -->
-      <q-card class="my-card">
+      <q-card class="my-card" @click="$router.push('/diet')">
         <q-card-section >
           <q-card-section horizontal class="col-6 flex flex-center">
             <q-img
@@ -93,7 +93,7 @@
       </q-card>
 
       <!-- 03. 아이성장 -->
-      <q-card class="my-card">
+      <q-card class="my-card" @click="$router.push('/stature')">
         <q-card-section >
           <q-card-section horizontal class="col-6 flex flex-center">
             <q-img
@@ -116,7 +116,7 @@
       </q-card>
 
       <!-- 04. 혈당 및 혈압 -->
-      <q-card class="my-card">
+      <q-card class="my-card" @click="$router.push('/stature')">
         <q-card-section >
           <q-card-section horizontal class="col-6 flex flex-center">
             <q-img
@@ -139,7 +139,7 @@
       </q-card>
 
       <!-- 04. 예약  -->
-      <q-card class="my-card">
+      <q-card class="my-card" @click="$router.push('/stature')">
         <q-card-section >
           <q-card-section horizontal class="col-6 flex flex-center">
             <q-img

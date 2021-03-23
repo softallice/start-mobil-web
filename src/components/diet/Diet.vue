@@ -148,7 +148,7 @@ export default {
       prompt: false,
       dateFormatter: undefined,
       start: undefined,
-      bodyweight: '',
+      bodyweight: 0,
       title: '',
       comment: '따뜻한 마음으로 진료 합니다.',
       selectedDate: '',

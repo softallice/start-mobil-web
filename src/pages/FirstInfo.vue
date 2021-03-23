@@ -121,11 +121,11 @@ export default {
           sex: this.sex,
           birth: this.birth,
         }
-        const userBodyWeight = {
+        const userBodyWeight = [{
           weightdate: inputDate,
           weight: this.bodyWeight,
           date: new Date(),
-        }
+        }]
 
         
         // 사용자 기본 정보 저장
@@ -148,12 +148,12 @@ export default {
       this.indexdb = new KeyValueStore("user-metadata", "metadata");
 
       try {
-        this.userInfo = await this.indexdb.get('userWeight');
+        this.userInfo = await this.indexdb.get('userInfo');
       } catch (e) {
-        console.error("failed to qusry the userweight", e);
+        console.error("failed to qusry the userInfo", e);
       }
-      console.log(this.userInfo)
-      if (this.userInfo.weight > 0 ) {
+      
+      if (typeof this.userInfo !== 'undefined' ) {
         this.$router.push('home')
       }
     }

@@ -42,7 +42,9 @@ export default {
   },
   data: () => ({
     drawer: false,
-    userInfo: {}
+    userInfo: {
+      username: '송아리(기본)'
+    }
   }),
   methods: {
     toggleDrawer () {

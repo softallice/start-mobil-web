@@ -1,22 +1,6 @@
 {
   "posts": [
     {
-      "title": "Build a Blog using Quasar and Markdown",
-      "description": "Use Quasar and markdown to build a personal blog",
-      "headerImage": "books.jpg",
-      "headerImageAlt": "Photo by Alfons Morales on Unsplash",
-      "tags": [
-        "technology",
-        "code"
-      ],
-      "filename": "build-blog-using-quasar.md",
-      "folder": "statics/posts/2020/04/08",
-      "headerImagePath": "posts/2020/04/08/books.jpg",
-      "filePath": "statics/posts/2020/04/08/build-blog-using-quasar.md",
-      "routerLink": "posts/2020/04/08/build-blog-using-quasar",
-      "publishDate": "2020-04-08"
-    },
-    {
       "title": "커피 다이어트 ?",
       "description": "커피 다이어틑 효과가 있을까?",
       "headerImage": "beverage.png",

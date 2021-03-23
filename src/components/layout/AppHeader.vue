@@ -5,10 +5,7 @@
   >
     <q-toolbar>
       <q-toolbar-title>
-        <div v-if="$route.matched.some(({ name }) => name === isBackButton)">
-          <q-btn flat icon="keyboard_arrow_left" @click=$router.go(-1) />
-        </div>
-        <div v-else> 
+        <div v-if="$route.matched.some(({ name }) => name === '홈' || name === '오늘의건강' || name === 'My서비스' )">
           <router-link to="/home">
             <img
               src="../../assets/images/logos/logo-main.png"
@@ -17,6 +14,9 @@
               class="q-pa-md flex flex-center"
             >
           </router-link>
+        </div>
+        <div v-else> 
+          <q-btn flat icon="keyboard_arrow_left" @click=$router.go(-1) />
         </div>
       </q-toolbar-title>
       <q-btn

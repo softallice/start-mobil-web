@@ -1,6 +1,6 @@
 <template>
   <q-page class="page-with-transparent-header">
-    <q-parallax :height="350" :speed="0.5">
+    <q-parallax :height="300" :speed="0.5">
       <template v-slot:media>
         <img 
           src="https://cdn.quasar.dev/img/parallax1.jpg">
