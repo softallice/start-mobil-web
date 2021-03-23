@@ -11,55 +11,55 @@
       ],
       "filename": "build-blog-using-quasar.md",
       "folder": "statics/posts/2020/04/08",
-      "headerImagePath": "statics/posts/2020/04/08/books.jpg",
+      "headerImagePath": "posts/2020/04/08/books.jpg",
       "filePath": "statics/posts/2020/04/08/build-blog-using-quasar.md",
       "routerLink": "posts/2020/04/08/build-blog-using-quasar",
       "publishDate": "2020-04-08"
     },
     {
-      "title": "Test Number 2",
-      "description": "Minim amet et consectetur occaecat est nostrud exercitation occaecat consectetur amet ea incididunt.",
-      "headerImage": "diego-ph-fIq0tET6llw-unsplash.jpg",
-      "headerImageAlt": "testPhoto by Diego PH on Unsplash",
+      "title": "커피 다이어트 ?",
+      "description": "커피 다이어틑 효과가 있을까?",
+      "headerImage": "beverage.png",
+      "headerImageAlt": "다이어트 커피",
       "tags": [
-        "development",
-        "code"
+        "diet",
+        "coffee"
       ],
-      "filename": "test2.md",
+      "filename": "diet-coffee.md",
       "folder": "statics/posts/2020/04/15",
-      "headerImagePath": "statics/posts/2020/04/15/diego-ph-fIq0tET6llw-unsplash.jpg",
-      "filePath": "statics/posts/2020/04/15/test2.md",
-      "routerLink": "posts/2020/04/15/test2",
+      "headerImagePath": "posts/2020/04/15/beverage.png",
+      "filePath": "statics/posts/2020/04/15/diet-coffee.md",
+      "routerLink": "posts/2020/04/15/diet-coffee",
       "publishDate": "2020-04-15"
     },
     {
-      "title": "This is a Test Title",
-      "description": "Do quis proident exercitation irure voluptate aliquip incididunt id laborum. Occaecat proident magna incididunt fugiat tempor labore velit consectetur culpa ullamco fugiat dolor. Tempor velit est quis cupidatat dolore.",
-      "headerImage": "helloquence-5fNmWej4tAA-unsplash.jpg",
+      "title": "먹어도 살빠지는 음식",
+      "description": "포만감이 높은 음식이 식욕 억제에 효과적이다.",
+      "headerImage": "vegetables.jpg",
       "headerImageAlt": "test",
-      "subject": "This is the Test subject",
-      "filename": "test.md",
+      "subject": "살 빠지는 음식 12선",
+      "filename": "diet-food.md",
       "folder": "statics/posts/2020/04/21",
-      "headerImagePath": "statics/posts/2020/04/21/helloquence-5fNmWej4tAA-unsplash.jpg",
-      "filePath": "statics/posts/2020/04/21/test.md",
-      "routerLink": "posts/2020/04/21/test",
+      "headerImagePath": "posts/2020/04/21/vegetables.jpg",
+      "filePath": "statics/posts/2020/04/21/diet-food.md",
+      "routerLink": "posts/2020/04/21/diet-food",
       "publishDate": "2020-04-21"
     },
     {
-      "title": "One Front-End to Rule Them All",
-      "description": "Quasar Framework",
-      "headerImage": "space.jpg",
-      "headerImageAlt": "Photo by Shot by Cerqueira on Unsplash",
+      "title": "성공적인 다이어트를 위한 10가지 지침",
+      "description": "매일 매일 체중 기록",
+      "headerImage": "bathroom-scale.jpg",
+      "headerImageAlt": "체중계 및 줄자",
       "publishDate": "2020-05-10",
       "tags": [
-        "technology",
-        "code"
+        "체중",
+        "diet"
       ],
-      "filename": "web-mobile-desktop-one-code-base.md",
+      "filename": "daily-diet.md",
       "folder": "statics/posts/2020/05/10",
-      "headerImagePath": "statics/posts/2020/05/10/space.jpg",
-      "filePath": "statics/posts/2020/05/10/web-mobile-desktop-one-code-base.md",
-      "routerLink": "posts/2020/05/10/web-mobile-desktop-one-code-base"
+      "headerImagePath": "posts/2020/05/10/bathroom-scale.jpg",
+      "filePath": "statics/posts/2020/05/10/daily-diet.md",
+      "routerLink": "posts/2020/05/10/daily-diet"
     }
   ]
 }

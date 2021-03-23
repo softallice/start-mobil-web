@@ -1,28 +1,24 @@
 <template>
   <q-page class="page-with-transparent-header">
-    <q-parallax src="../statics/tree-bg.jpg">
+    <q-parallax :height="350" :speed="0.5">
+      <template v-slot:media>
+        <img 
+          src="https://cdn.quasar.dev/img/parallax1.jpg">
+      </template>
       <div class="header-image-content">
-        <h1 class="text-white text-bold q-pa-md">Welcome to Hoff Design</h1>
+        <h3 class="text-white text-bold q-pa-md">오늘의 건강 정보 </h3>
       </div>
-
     </q-parallax>
     <div>
-      <h2 class="text-center">Latest Posts</h2>
+      <h4 class="text-center">최근 건강 정보</h4>
       <div class="latest-posts">
         <q-card
           class="latest-posts-card"
           v-for="post in latestPosts"
           :key="post.title"
         >
-        <!-- scss 오류 해결 필요 -->
-        {{ post.headerImagePath}}
-        <!-- :src="require(`src/` + post.headerImagePath)" -->
-        <!-- "../statics/posts/2020/04/08/books.jpg"  -->
           <q-img
-            
-            src="../statics/posts/2020/04/08/books.jpg"
-            
-            
+            :src="require(`src/statics/` + post.headerImagePath)"
             :ratio="16/9"
           >
 
@@ -37,31 +33,6 @@
 
           </q-img>
         </q-card>
-
-      </div>
-    </div>
-    <div
-      v-for="post in postsTest"
-      :key="post.key"
-    >
-      <h2>{{post.key}}</h2>
-      <div v-html="mdIt(post.body)">
-
-      </div>
-
-    </div>
-    <div class="row q-ma-lg">
-      <div class="col">
-        <q-input
-          v-model="testMarkdown"
-          filled
-          type="textarea"
-        />
-      </div>
-      <div
-        class="col bg-grey-1 q-ml-sm"
-        v-html="mdIt(testMarkdown)"
-      >
 
       </div>
     </div>
@@ -110,9 +81,8 @@ export default {
       return posts.sort((a, b) => a.publishDate - b.publishDate).reverse()
     },
     async getPostsTest () {
-      // const response = await axios.get(`${process.env.API_URL}/admin/posts`)
-      // const response = await axios.get(`${process.env.API_URL}/admin/posts`)
-      // this.postsTest = response.data.posts
+      const response = await axios.get(`${process.env.API_URL}/admin/posts`)
+      this.postsTest = response.data.posts
       console.log(this.postsTest)
     },
     mdIt (markdown) {
@@ -121,8 +91,7 @@ export default {
   },
   async created () {
     this.latestPosts = this.sortByDate(postList.posts).slice(0, 3)
-    
-console.log(this.latestPosts)
+
     // await this.getPostsTest()
     console.log(this.postsTest)
   }

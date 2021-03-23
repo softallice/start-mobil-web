@@ -1,5 +1,7 @@
 <template>
-  <q-layout view="hHh Lpr fFf">
+  <q-layout 
+    @scroll="updateHeaderColor"
+    view="hHh Lpr fFf">
     <AppHeader />
     <AppDrawer />
     <AppFooter />
@@ -38,7 +40,7 @@ export default {
     AppHeader,
     AppDrawer,
     AppFooter,
-    Loading
+    Loading,
   },
   props: {
     content: {
@@ -47,12 +49,25 @@ export default {
     }
   },
   data: () => ({
-    isLoading: false
+    isLoading: false,
+    transparentHeader: true
   }),
   mounted () {
     this.$root.$on('onAPILoadingStart', () => { this.isLoading = true })
     this.$root.$on('onAPILoadingEnd', () => { this.isLoading = false })
-  }
+    
+  },
+  methods: {
+    updateHeaderColor (details) {
+      // Only run if the page has set the header transparency
+
+      if (details.position <= 200) {
+        this.transparentHeader = true
+      } else if (details.position > 200) {
+        this.transparentHeader = false
+      }
+    }
+  },
 }
 </script>
 

@@ -1,12 +1,12 @@
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       {
         name: '홈',
-        path: '/',
+        path: '/home',
         icon: 'home',
         component: () => import('pages/IndexPage.vue')
       },
@@ -85,6 +85,11 @@ const routes = [
   { 
     path: '/login',
     component: () => import('pages/Login.vue') 
+  },
+  { 
+    name: 'FirstInfo',
+    path: '/',
+    component: () => import('pages/FirstInfo.vue') 
   },
   { 
     path: '/consent',

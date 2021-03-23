@@ -13,11 +13,10 @@
       >
 
         <div v-if="index===0">
-          <!-- sass 이미지 오류 -->
-          <!-- <q-img
+          <q-img
             class="featured-image"
-            :src="require(`src/` + post.headerImagePath)"
-          > -->
+            :src="require(`../../statics/` + post.headerImagePath)"
+          >
             <div class="header-image-content post-header-image-content row">
               <div class="q-px-md col-md-10 col-sm-12 text-white">
                 <h1 class=" text-bold q-pa-md">
@@ -59,7 +58,7 @@
               />
             </div> -->
 
-          <!-- </q-img> -->
+          </q-img>
           <div class="text-h5 q-mt-sm q-ml-sm">Earlier Posts</div>
         </div>
 
@@ -70,12 +69,11 @@
 
           <q-card class="q-ma-md post">
             <q-card-section horizontal>
-              <!-- sass 오류 발생 -->
-              <!-- <q-img
-                :src="require(`src/` + post.headerImagePath)"
+              <q-img
+                :src="require(`../../statics/` + post.headerImagePath)"
                 :alt="post.headerImageAlt"
                 class="post-image"
-              /> -->
+              />
             </q-card-section>
 
             <q-card-section>

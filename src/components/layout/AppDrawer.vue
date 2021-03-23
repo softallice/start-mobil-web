@@ -13,7 +13,7 @@
           <q-avatar size="56px" class="q-mb-sm">
             <img src="https://cdn.quasar.dev/img/boy-avatar.png">
           </q-avatar>
-          <div class="text-weight-bold">송아리(로그인시)</div>
+          <div class="text-weight-bold">{{userInfo.username}}</div>
           <div>songari@naver.com</div>
         </div>
       </q-img>
@@ -29,6 +29,7 @@
 <script>
 import DrawerAppSettings from 'components/partials/DrawerAppSettings'
 import DrawerRoutesList from 'components/partials/DrawerRoutesList'
+import { KeyValueStore } from "pages/common/keyValStore.js";
 
 export default {
   name: 'AppDrawer',
@@ -40,11 +41,22 @@ export default {
     this.$root.$on('ToggleDrawer', this.toggleDrawer)
   },
   data: () => ({
-    drawer: false
+    drawer: false,
+    userInfo: {}
   }),
   methods: {
     toggleDrawer () {
       this.drawer = !this.drawer
+    }
+  },
+  beforeCreate: async function () {
+    // 로컬 DB 초기화 
+    this.indexdb = new KeyValueStore("user-metadata", "metadata");
+
+    try {
+      this.userInfo = await this.indexdb.get('userInfo');
+    } catch (e) {
+      console.error("failed to qusry the userweight", e);
     }
   }
 }

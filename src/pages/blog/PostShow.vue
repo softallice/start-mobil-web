@@ -3,7 +3,7 @@
     <q-parallax :src="headerImage">
       <div class="header-image-content post-header-image-content row">
         <div class="q-px-md text-white">
-          <h1 class=" text-bold q-pa-md">{{post.attributes.title}}</h1>
+          <div class="text-h2 text-bold q-pa-md">{{post.attributes.title}}</div>
           <div class="text-h3"> {{post.attributes.description}}</div>
           <div class="text-subtitle">{{publishedDate(post.attributes.publishDate)}}</div>
         </div>
@@ -14,7 +14,7 @@
     <div class="row justify-center">
       <div
         v-html="post.html"
-        class="post-container q-pa-lg bg-white"
+        class="post-container q-pa-lg bg-white text-body"
       >
       </div>
     </div>

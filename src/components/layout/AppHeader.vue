@@ -1,13 +1,22 @@
 <template>
-  <q-header>
+  <q-header
+    :class="transparency"
+    class="header"
+  >
     <q-toolbar>
       <q-toolbar-title>
-        
         <div v-if="$route.matched.some(({ name }) => name === isBackButton)">
           <q-btn flat icon="keyboard_arrow_left" @click=$router.go(-1) />
         </div>
         <div v-else> 
-          <h4 class="q-ma-none">송아리</h4>
+          <router-link to="/home">
+            <img
+              src="../../assets/images/logos/logo-main.png"
+              style="height: 70px"
+              alt="Song A Ri "
+              class="q-pa-md flex flex-center"
+            >
+          </router-link>
         </div>
       </q-toolbar-title>
       <q-btn
@@ -33,12 +42,22 @@ export default {
     suggestedLocations: [],
     isSuggestedLocationClicked: false,
     isBackButton: 'Diet',
+    
   }),
   methods: {
-    
+        
   },
   watch: {
     
+  },
+  computed: {
+    transparency () {
+      if (this.transparentHeader) {
+        return 'transparent'
+      } else {
+        return ''
+      }
+    }
   }
 }
 </script>
@@ -69,5 +88,9 @@ export default {
   span:hover {
     color: #50afe6;
   }
+}
+
+.header {
+  transition: background-color 1000ms linear;
 }
 </style>
