@@ -20,6 +20,7 @@
     "markdown-it-prism": "^2.1.6",
     "prismjs": "^1.23.0",
     "quasar": "^1.15.0",
+    "quasar-components-chart": "^0.1.7",
     "vue-echarts-v3": "^2.0.1"
   },
   "devDependencies": {

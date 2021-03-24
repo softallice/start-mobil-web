@@ -3,7 +3,7 @@
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
       <q-card class="q-ma-xs" style="background-color: #38b1c5">
         <q-card-section class="q-pa-none">
-          <IEcharts style="height: 250px" :option="LineChart2" :resizable="true"/>
+          <IEcharts style="height: 150px" :option="LineChart2" :resizable="true"/>
         </q-card-section>
       </q-card>
     </div>    
@@ -53,7 +53,9 @@ export default {
             }
         },
         "series": [{"type": "line", "areaStyle": {}, "smooth": false}],
-        "dataset": this.line.dataset,
+        "dataset": {
+            "source": this.line.data
+        },
         "color": ["#45c2c5"]
     },
     }

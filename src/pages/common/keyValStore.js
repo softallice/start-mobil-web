@@ -6,7 +6,7 @@
     constructor(dbName, storeName) {
       if (!dbName || !storeName) {
         // eslint-disable-next-line no-throw-literal
-        throw "db name and store name is mandatory";
+        throw "db와 store는 필수입니다.";
       }
   
       this.dbName = dbName;

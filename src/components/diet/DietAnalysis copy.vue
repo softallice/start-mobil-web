@@ -1,8 +1,9 @@
 <template>
   <q-page class="q-pa-sm">  
     <div style="max-width: 800px; width: 100%;">
-      <LineChart :chartdata="data" /> 
+        <CardChartsLine :line="diet"/>
     </div>
+      
     <!-- 다이어트 체중 입력 다이얼로그 -->
     <q-dialog v-model="promptWeight" persistent>
       <q-card style="min-width: 350px">
@@ -61,23 +62,13 @@
 </template>
 
 <script>
-
-import LineChart from 'components/chart/LineChart'
 import { KeyValueStore } from "pages/common/keyValStore.js"
 import { date } from 'quasar'
-
 
 export default {
   name: 'DietAnalysis',
   components: {
-    LineChart 
-    // CardChartsLine: () =>  import('components/cards/CardChartsLine'),
-  },
-  props: {
-    diet: {
-      type: Object,
-      required: true
-    }
+    CardChartsLine: () =>  import('components/cards/CardChartsLine'),
   },
   data () {
     return {
@@ -87,47 +78,25 @@ export default {
       bodyWeight: 50,
       userInfo: {},
       userWeight: [],
-      weightList: [],
-      valueData: [],
-      data: {
-        type: 'line',
-        data: {
-          labels: ["2021/03/31", "2021/03/24"], //"2021/03/26", "2021/04/23", "2021/03/09", "2021/03/05", "2021/03/01", "2021/02/28", "2021/02/24", "2021/03/27", "2021/03/24"],
-          datasets: [
-            {
-              data: [ 100, 200],
-              label: '내몸무게',
-              borderColor: '#3e95cd',
-              backgroundColor: 'white',
-              fill: false,
-              lineTension: 0.9
-            }
-          ]
-        },
-        options: {
-          legend: {
-            display: false
-          },
-          title: {
-            display: true,
-            text: '최근 5건의 몸무게 변화'
-          },
-          responsive: true
-        }
-      }
     }
   },
-  beforeMount () {
-    // console.log('conselor >> ', this.diet)
-    this.data.data.labels = this.diet.labelData
-    this.data.data.datasets[0].data = this.diet.valueData
+  props: {
+    diet: {
+      type: Object,
+      required: true
+    }
   },
   watch: {
-    weightList: function (value) {
-      console.log("watch")
+    diet: function (value) {
       if (!!value) {
-        this.getChartData(this.weightList)
+        console.log('watch')
       }
+    }    
+  },
+  beforeMount () {
+    console.log('diet',this.diet)
+    if (!!(this.diet && this.diet.dataset)) {
+      console.log('beforeMount')
     }
   },
   beforeCreate: async function () {
@@ -188,68 +157,8 @@ export default {
 
       console.log('weightArray',weightArray)
       // this.diet = weightArray
-      // this.diet.data = weightArray
-
-      this.weightList = this.setWeight(this.sortByDate(this.arryUserWeight(weightArray)).slice(-5))
-      this.data.options.title.text = '테스트'
-      
-      
-    },
-    //-----------------------------------------------------------------------------//
-    // 신규 데이터 생성시 차트 데이터 변경 
-    //일자로 정렬
-    arryUserWeight( obj ) {
-      const arryUserWeight = []
-          for (var i= 0 ; i < obj.length; i++) {
-            arryUserWeight.push({
-                "weightdate": obj[i].weightdate, 
-                "weight": obj[i].weight,
-              }
-            )
-          }
-      return arryUserWeight
-    },
-    sortByDate (weight) {
-      weight.sort(this.GetSortOrder("weightdate")).reverse()
-      return weight 
-    },
-    setWeight (weight) {
-      const bodyList = {
-        "data" : weight
-        }
-      return bodyList
-    },
-    GetSortOrder(prop) {    
-      return function(a, b) {    
-        if (a[prop] > b[prop]) {    
-            return -1;    
-        } else if (a[prop] < b[prop]) {    
-            return 1;    
-        }    
-        return 0;    
-      }    
-    },
-    getChartData (addWeight) {
-      let json = {}
-      let labelData = []
-      let valueData = []
-
-      json = addWeight
-      
-      
-      json.data.forEach((item,idx)=>{
-        labelData.push(item.weightdate);
-        valueData.push(parseInt(item.weight));
-      });
-
-      console.log('labelData : ', labelData)
-      console.log('valueData : ', valueData)
-
-      this.data.data.labels = labelData
-      this.data.data.datasets[0].data = valueData
-      
-    } 
-    //-----------------------------------------------------------------------------//
+      this.diet.data = weightArray
+    }
   },
 }
 </script>
