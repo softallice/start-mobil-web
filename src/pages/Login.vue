@@ -14,7 +14,8 @@
               <div class="col text-h8 ellipsis">
                 송가리 어플에 로그인 하시면 <br>
                 진료기록관리, 성장관리 등 회원 전용 서비스를 <br>
-                모두 이용 하실 수 있습니다.
+                모두 이용 하실 수 있습니다.                
+                {{$store.state.auth.loggedIn}}
               </div>
             </div>
           </q-card-section>
@@ -41,6 +42,16 @@
               <div >
                 <q-btn class="full-width" label="로그인" to="/diet" type="button" color="primary"/>
               </div>
+              <div >
+                <q-btn class="full-width" label="구글로그인" @click="signInWithGoogle" type="button" color="primary"/>
+              </div>
+              <div >
+                <q-btn class="full-width" label="구글로그아웃" @click="siginOut" type="button" color="primary"/>
+              </div>
+              <div >
+                <q-btn class="full-width" label="notify" @click="showNotif" type="button" color="primary"/>
+              </div>
+              
             </q-form>
           </q-card-section>
         </q-card>
@@ -52,14 +63,33 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                username: 'Songari',
-                password: '12345'
-            }
-        },
+import { mapState, mapActions } from 'vuex'
+export default {
+    data() {
+        return {
+            username: 'Songari',
+            password: '12345'
+        }
+    },
+    mounted () {
+      this.loggedInOrLoggedOut()
+    },
+    methods: {
+      ...mapActions('auth', ['loginUser', 'logoutUser','loggedInOrLoggedOut']),
+      async signInWithGoogle () {
+        this.loginUser()
+      },
+      async siginOut() {
+        this.logoutUser()
+      },
+      showNotif () {
+        this.$q.notify({
+          message: 'Jim pinged you.',
+          color: 'purple'
+        })
+      }  
     }
+}
 </script>
 
 <style>

@@ -32,6 +32,9 @@
       "statics/*": [
         "src/statics/*"
       ],
+      "store/*": [
+        "src/store/*"
+      ],
       "vue$": [
         "node_modules/vue/dist/vue.esm.js"
       ]

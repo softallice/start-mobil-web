@@ -7,6 +7,9 @@ A Quasar Framework app
 yarn
 ```
 
+## firebase config file
+**./fitebaseConfig.js**
+
 ### Start the app in development mode
 ```bash
 quasar dev -m spa|pwa|electron

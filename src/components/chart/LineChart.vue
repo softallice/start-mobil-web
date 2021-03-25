@@ -42,11 +42,14 @@ export default {
       
     }
   },
+  created () {
+    this.$root.$on('chartUpdate', this.chartUpdateCallback)
+  },
   mounted () {
-    this.createChart('line-chart')
+    this.createChart('line-chart', 'old')
   },
   methods: {
-    createChart (chartId) {
+    createChart (chartId, newData) {
       const ctx = document.getElementById(chartId)
       const myChart = new Chart(ctx, {
         type: this.chartdata.type,
@@ -56,7 +59,13 @@ export default {
         },
         options: this.chartdata.options
       })
+      if (newData === 'new') {
+          myChart.update()
+      }
       return myChart
+    },
+    chartUpdateCallback () {
+        this.createChart('line-chart', 'new')
     }
   }
 }

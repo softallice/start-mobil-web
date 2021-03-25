@@ -122,14 +122,14 @@ export default {
     this.data.data.labels = this.diet.labelData
     this.data.data.datasets[0].data = this.diet.valueData
   },
-  watch: {
-    weightList: function (value) {
-      console.log("watch")
-      if (!!value) {
-        this.getChartData(this.weightList)
-      }
-    }
-  },
+  // watch: {
+  //   weightList: function (value) {
+  //     console.log("watch")
+  //     if (!!value) {
+  //       this.getChartData(this.weightList)
+  //     }
+  //   }
+  // },
   beforeCreate: async function () {
     // 로컬 DB 초기화 
     this.indexdb = new KeyValueStore("user-metadata", "metadata");
@@ -192,6 +192,7 @@ export default {
 
       this.weightList = this.setWeight(this.sortByDate(this.arryUserWeight(weightArray)).slice(-5))
       this.data.options.title.text = '테스트'
+      this.getChartData(this.weightList)
       
       
     },
@@ -247,7 +248,7 @@ export default {
 
       this.data.data.labels = labelData
       this.data.data.datasets[0].data = valueData
-      
+      this.$root.$emit('chartUpdate')
     } 
     //-----------------------------------------------------------------------------//
   },

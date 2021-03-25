@@ -113,7 +113,7 @@ export default {
         this.bodyWeight = this.bodyWeight - 1
       },
 
-      saveUserInfo () {
+      async saveUserInfo () {
         const inputDate = date.formatDate(new Date(), 'YYYY/MM/DD')
 
         const user = {
@@ -127,6 +127,11 @@ export default {
           date: new Date(),
         }]
 
+        const response = await this.$firebase.firestore().collection('users').doc('userInfo').set(
+          user
+        )
+
+        console.log(response)
         
         // 사용자 기본 정보 저장
         try {
