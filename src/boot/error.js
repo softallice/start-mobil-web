@@ -11,4 +11,7 @@ Vue.config.errorHandler = e => {
   // this.$q.notify({
   //   message: e.message
   // })
+  Notify.create({
+    message: e.message
+  })
 }

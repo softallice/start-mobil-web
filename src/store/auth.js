@@ -2,12 +2,28 @@ import { firebaseAuth } from 'boot/firebase'
 import { Loading } from 'quasar'
 
 const state = {
-  loggedIn: false
+  loggedIn: false,
+  userName: null,
+  email: null,
+  claim: null,
+  photoURL: null,
+
 }
 
 const mutations = {
   setLoggedIn (state, value) {
     state.loggedIn = value
+  },
+  setUserInfo (state, user) {
+    state.userName = user.displayName
+    state.email = user.email
+    state.photoURL = user.photoURL
+  },
+  setToken(state, token) {
+    state.token = token
+  },
+  setClaims(state, claims) {
+    state.claims = claims
   }
 }
 
@@ -38,10 +54,10 @@ const actions = {
     try {
       const response = await firebaseAuth.auth().signInWithEmailAndPassword(payload.email, payload.password)
       commit('setLoggedIn', true)
-      console.log('response login: ', response)
+      // console.log('response login: ', response)
       Loading.hide()
     } catch (error) {
-      console.log('error.message: ', error.message)
+      // console.log('error.message: ', error.message)
       Loading.hide()
     }    
   },
@@ -52,7 +68,23 @@ const actions = {
       const provider = new firebaseAuth.auth.GoogleAuthProvider()
       firebaseAuth.auth().languageCode = 'ko'
       const response = await firebaseAuth.auth().signInWithPopup(provider)
-      commit('setLoggedIn', true)
+      await firebaseAuth.auth().currentUser.getIdToken(true)
+        commit('setUserInfo', {
+          displayName: response.user.displayName,
+          email: response.user.email,
+          photoURL: response.user.photoURL
+        })
+        commit('setLoggedIn', true)
+        response.user.getIdToken()
+          .then(token => {
+            commit('setToken',token)
+            return response.user.getIdTokenResult()
+          })
+          .then(r => {
+            // console.log(r)
+            commit('setClaims', r.claims)
+          })
+
       console.log('response login: ', response)
       Loading.hide()
     } catch (error) {
@@ -60,19 +92,45 @@ const actions = {
       Loading.hide()
     }    
   },
-  logoutUser () {
+  logoutUser ({ commit }) {
     console.log('-logout-')
-    firebaseAuth.auth().signOut()
-    commit('setLoggedIn', false)
+    try {
+      firebaseAuth.auth().signOut()
+      commit('setLoggedIn', false)
+    } catch (e) {
+      console.log(e)
+    }
   },
   loggedInOrLoggedOut ({ commit }) {
     console.log('loggedInOrLoggedOut')
     firebaseAuth.auth().onAuthStateChanged(user => {
       Loading.hide()
+      console.log(user)
       if (user) {
-        commit('setLoggedIn', true)
+        commit('setUserInfo', {
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          level: user.level
+        })
+        commit('setLoggedIn', true)  
+        user.getIdToken()
+          .then(token => {
+            commit('setToken',token)
+            return user.getIdTokenResult()
+          })
+          .then(r => {
+            console.log(r)
+            commit('setClaims', r.claims)
+          })                
       } else {
         commit('setLoggedIn', false)
+        commit('setUserInfo', {
+          displayName: null,
+          email: null,
+          photoURL: null,
+        })
+        commit('setToken',null)
       }
     })
   }

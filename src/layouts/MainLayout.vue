@@ -2,9 +2,9 @@
   <q-layout 
     @scroll="updateHeaderColor"
     view="hHh Lpr fFf">
-    <AppHeader />
+    <AppHeader v-if="$route.name !== 'Login' && $route.name !== 'FirstInfo'"/>
     <AppDrawer />
-    <AppFooter />
+    <AppFooter v-if="$route.name !== 'Login' && $route.name !== 'FirstInfo'" />
     <q-page-container class="app-page-container">
       <transition
         appear

@@ -34,7 +34,8 @@ export default {
     appRoutes () {
       return this.$router.options.routes[0].children.filter(route => route.name !== '홈' && route.name !== 'My서비스' && 
             route.name !== 'Astro' && route.name !== 'Diet' && route.name !== '오늘의건강' && route.name !== 'Stature' &&
-            route.name !== 'Post' && route.name !== 'PostShow' && route.name !== 'Credits')
+            route.name !== 'Post' && route.name !== 'PostShow' && route.name !== 'Credits' && route.name !== 'Login' &&
+            route.name !== 'FirstInfo' && route.name !== 'Home' )
     }
   }
 }

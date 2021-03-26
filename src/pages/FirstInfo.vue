@@ -72,7 +72,7 @@
               </q-input>
 
               <div >
-                <q-btn class="full-width" label="시작하기" @click="saveUserInfo" to="/home" type="button" color="primary"/>
+                <q-btn class="full-width" label="시작하기" @click="saveUserInfo" type="button" color="primary"/>
               </div>
             </q-form>
           </q-card-section>
@@ -114,53 +114,89 @@ export default {
       },
 
       async saveUserInfo () {
-        const inputDate = date.formatDate(new Date(), 'YYYY/MM/DD')
+        const inputDate = date.formatDate(new Date(), 'YYYY-MM-DD')
 
+        // console.log('this.$store.state.auth.email', this.$store.state.auth.email)
+//---------------------------------------
         const user = {
-          username: this.username,
+          email: this.$store.state.auth.email,
+          name: this.username,
           sex: this.sex,
           birth: this.birth,
         }
-        const userBodyWeight = [{
-          weightdate: inputDate,
-          weight: this.bodyWeight,
-          date: new Date(),
-        }]
+        const userBodyWeight = {
+          email: this.$store.state.auth.email,
+          // weightdate: inputDate,
+          weight: this.bodyWeight
+        }
 
-        const response = await this.$firebase.firestore().collection('users').doc('userInfo').set(
-          user
-        )
+        // try {
+        //   const resUserInfo = await this.$firebase.firestore().collection('users').doc('userInfo').set(
+        //     user
+        //   )
+        // } catch (e) {
+        //   console.log('기본 정보 data 저장 실패')
+        // }
 
-        console.log(response)
+        // try {
+        //   const resUserWeight = await this.$firebase.firestore().collection('users').doc('userWeight').set(
+        //     userBodyWeight
+        //   )
+        // } catch (e) {
+        //   console.log('몸무게 data 저장 실패', e)
+        // }
+//-----------------------------------------
+        try {
+          const userRef = await this.$firebase.firestore().collection('users')
+          const snapshot = await userRef.where('email', '==', this.$store.state.auth.email).get();
+          if (snapshot.empty) {
+            console.log('No matching documents.');
+            const resUserInfo = await this.$firebase.firestore().collection('users').doc(this.$store.state.auth.email).set(
+              user
+            )
+
+            const resUserWeight = await this.$firebase.firestore().collection(this.$store.state.auth.email).doc(inputDate).set(
+              userBodyWeight
+            )
+          } else {
+            console.log('이미 정보가 존재함')
+          }
+          this.$router.push('/home')
+        } catch (e) {
+          console.log('data 생성 실패')
+        }
+        
+
+        // console.log(response)
         
         // 사용자 기본 정보 저장
-        try {
-          this.indexdb.store('userInfo', user);
-        } catch (e) {
-          console.error("failed to save the userInfo", e);
-        }
-        // 최초 몸무게 저장
-        try {
-          this.indexdb.store('userWeight', userBodyWeight);
-        } catch (e) {
-          console.error("failed to save the userweight", e);
-        }
+        // try {
+        //   this.indexdb.store('userInfo', user);
+        // } catch (e) {
+        //   console.error("failed to save the userInfo", e);
+        // }
+        // // 최초 몸무게 저장
+        // try {
+        //   this.indexdb.store('userWeight', userBodyWeight);
+        // } catch (e) {
+        //   console.error("failed to save the userweight", e);
+        // }
         
       }
     },
     beforeCreate: async function () {
-      // 로컬 DB 초기화 
-      this.indexdb = new KeyValueStore("user-metadata", "metadata");
+    //   // 로컬 DB 초기화 
+    //   this.indexdb = new KeyValueStore("user-metadata", "metadata");
 
-      try {
-        this.userInfo = await this.indexdb.get('userInfo');
-      } catch (e) {
-        console.error("failed to qusry the userInfo", e);
-      }
+    //   try {
+    //     this.userInfo = await this.indexdb.get('userInfo');
+    //   } catch (e) {
+    //     console.error("failed to qusry the userInfo", e);
+    //   }
       
-      if (typeof this.userInfo !== 'undefined' ) {
-        this.$router.push('home')
-      }
+    //   if (typeof this.userInfo !== 'undefined' ) {
+    //     this.$router.push('home')
+    //   }
     }
 }
 </script>

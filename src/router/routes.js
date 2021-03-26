@@ -1,9 +1,15 @@
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
+      {
+        name: 'Home',
+        path: '',
+        icon: 'home',
+        component: () => import('pages/IndexPage.vue')
+      },
       {
         name: '홈',
         path: '/home',
@@ -14,7 +20,8 @@ const routes = [
         name: 'My서비스',
         path: '/Service',
         icon: 'person',
-        component: () => import('pages/Service.vue')
+        component: () => import('pages/Service.vue'),
+        meta: { requiresAuth: true }
       },
       {
         name: '오늘의건강',
@@ -44,7 +51,8 @@ const routes = [
         name: 'Diet',
         path: '/diet',
         icon: 'how_to_reg',
-        component: () => import('pages/diet/DietTab.vue') 
+        component: () => import('pages/diet/DietTab.vue') ,
+        meta: { requiresAuth: true }
       },
       { 
         name: 'Stature',
@@ -62,6 +70,17 @@ const routes = [
         path: '/posts/:year/:month/:day/:title', 
         component: () => import('pages/blog/PostShow.vue') 
       },
+      { 
+        name: 'Login',
+        path: '/login',
+        component: () => import('pages/Login.vue') 
+      },
+      { 
+        name: 'FirstInfo',
+        path: '/first',
+        component: () => import('pages/FirstInfo.vue') ,
+        meta: { requiresAuth: true }
+      }
       // { path: '/resources', component: () => import('pages/resources/ResourceIndex.vue') },
       // { path: '/resources/:resource', component: () => import('pages/resources/ResourceShow.vue') },
       // { path: '/admin', component: () => import('pages/admin/AdminIndex.vue') },
@@ -82,15 +101,15 @@ const routes = [
   //     { path: '/admin/posts/edit/:key', name: 'edit-post', component: () => import('pages/admin/EditPost.vue') }
   //   ]
   // },
-  { 
-    path: '/login',
-    component: () => import('pages/Login.vue') 
-  },
-  { 
-    name: 'FirstInfo',
-    path: '/',
-    component: () => import('pages/FirstInfo.vue') 
-  },
+  // { 
+  //   path: '/login',
+  //   component: () => import('pages/Login.vue') 
+  // },
+  // { 
+  //   name: 'FirstInfo',
+  //   path: '/',
+  //   component: () => import('pages/FirstInfo.vue') 
+  // },
   { 
     path: '/consent',
     component: () => import('pages/Consent.vue') 

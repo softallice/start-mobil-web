@@ -24,6 +24,19 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
+
+  watch: {
+    currentUser(newUser, oldUser) {
+      if (newUser === null) {
+        this.$router.push("/");
+      } else {
+        if (this.$route.path === "/login") {
+          this.$router.push("/home");
+        }
+      }
+    }
+  },
+
   created () {
     this.$q.dark.set(true)
   },
@@ -37,7 +50,10 @@ export default {
     position: null
   }),
   computed: {
-    ...mapGetters('theme', ['activeTheme'])
+    ...mapGetters('theme', ['activeTheme']),
+    currentUser() {
+      return this.$store.state.auth.name;
+    }
   },
   methods: {
     checkAccessDevicePosition () {

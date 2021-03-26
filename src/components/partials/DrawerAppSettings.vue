@@ -1,6 +1,6 @@
 <template>
   <q-list>
-    <q-item-label header>Settings</q-item-label>
+    <q-item-label header>설정</q-item-label>
     <q-item
       @click="showAvailableThemes = !showAvailableThemes"
       clickable
@@ -14,8 +14,8 @@
         />
       </q-item-section>
       <q-item-section>
-        <q-item-label>App Theme</q-item-label>
-        <q-item-label caption lines="2">Change theme color</q-item-label>
+        <q-item-label>배경 테마</q-item-label>
+        <q-item-label caption lines="2">테마 컬러 선택</q-item-label>
       </q-item-section>
     </q-item>
     <div v-show="showAvailableThemes" class="flex column items-start q-ml-md">
@@ -30,6 +30,11 @@
         size="40px"
       />
     </div>
+    <q-item>
+      <div>
+        <q-btn class="full-width absolute-bottom" label="로그아웃" @click="siginOut" type="button" color="primary"/>
+      </div>
+    </q-item>
   </q-list>
 </template>
 
@@ -46,10 +51,19 @@ export default {
   },
   methods: {
     ...mapActions('theme', ['changeTheme']),
+    ...mapActions('auth', ['logoutUser']),
     changeCurrentTheme (k, t) {
       this.changeTheme({ key: k, updates: { isActive: !t.isActive } })
       this.showAvailableThemes = !this.showAvailableThemes
-    }
+    },
+    async siginOut() {
+      try{
+        this.logoutUser()
+        this.$router.push('/login')
+      } catch (e) {
+        console.log(e)
+      }
+    },
   }
 }
 </script>
